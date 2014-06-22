@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Pitch Deck</title>
+	<meta name="description" content="Pitch Deck">
+	<meta name="author" content="Alex Lee">
+	<meta name="generator" content="slidify" />
+	
+	<!-- LOAD STYLE SHEETS -->
+	<link rel="stylesheet" href="libraries/frameworks/html5slides/default/styles.css">
+	<link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />  <link rel="stylesheet" href = "assets/css/ribbons.css">
+  
+</head>
+<body style='display: none'>
+	<section class='slides layout-regular template-regular'>
+     <article class="" id="slide-1" style="background:;">
+  <h3>Financial Key Performance Indicators (KPIs): Online Dashboard</h3>
+  <p>We are introducing a new, online, financial management oversight tool to track our company&#39;s performance, built in R.</p>
+
+<p>What this tool offers:</p>
+
+<ul>
+<li>Live financial ratio calculation</li>
+<li>User-defined alert thresholds</li>
+<li>Easy, online accessibility with a graphical frontend</li>
+<li>Customizable in R without web development knowledge</li>
+</ul>
+
+<p>Where to find it:</p>
+
+<ul>
+<li>Online at: <a href="https://cs79.shinyapps.io/Financial-KPI-Tool/">https://cs79.shinyapps.io/Financial-KPI-Tool/</a></li>
+</ul>
+
+</article>
+
+<article class="class" id="id" style="background:;">
+  <h3>What Metrics are Covered?</h3>
+  <p>By default, this online tool supports:</p>
+
+<ul>
+<li>Current Ratio: \(Current Liabilities/Current Assets\)</li>
+<li>Quick Ratio: \(Current Assets-Inventory/Current Liabilities\)</li>
+<li>Working Capital Ratio: \(Current Assets/Current Liabilities\)</li>
+<li>Debt Ratio: \(Liabilities/Assets\)</li>
+</ul>
+
+<p>By virtue of being written in R with Shiny, it is easily extensible to cover other metrics as needed by management.</p>
+
+</article>
+
+<article class="class" id="id" style="background:;">
+  <h3>How it Works: Example in R</h3>
+  <p>In conjunction with the Shiny web framework for R, this application uses R to compute ratios and track indicators.  As an example, the app&#39;s Quick Ratio function looks like this:</p>
+
+<pre><code class="r">qRat &lt;- function(curAssets, inv, curLiab) { round((curAssets-inv)/curLiab, 2) }
+</code></pre>
+
+<p>If we knew the formula Current Assets offhand, we could pass it to the function directly, along with our current liabilities:</p>
+
+<pre><code class="r">cash = 100; marketableSecurities = 200; inventory = 300; accountsReceivable = 500; otherLiquidAssets = 1500; liabilities = 790
+qRat(sum(cash, marketableSecurities, inventory, accountsReceivable, otherLiquidAssets), inventory, liabilities)
+</code></pre>
+
+<pre><code>## [1] 2.91
+</code></pre>
+
+<p>The web app saves users the trouble of having to know formulae like this; individual figures can be plugged directly into the interface and the app computes them automatically.</p>
+
+</article>
+
+<article class="class" id="id" style="background:;">
+  <h3>What else should I know?</h3>
+  <ul>
+<li>The app provides a graphical interface for entering financial figures and setting thresholds -- no need to use R code directly as on the previous slide.</li>
+<li>The app can track multiple metrics simultaneously, and will recompute KPIs on the fly as figures are adjusted for all ratios for which those figures are relevant.</li>
+<li>The application also allows custom specification of alert levels: alert thresholds can be specified on a per-ratio basis, and notify the user if they are being approached and/or exceeded.</li>
+<li>The app can be used from anywhere with web access -- no more worrying about having the right spreadsheet.  This is a new one-stop-shop for financial analysis for management.</li>
+</ul>
+
+</article>
+
+<article class="class" id="id" style="background:;">
+  <h3>Recap</h3>
+  <p>This new financial management application provides:</p>
+
+<ul>
+<li>An easy-to-use interface for financial metric analysis without the need to know R code or specific formulae offhand: just enter figures from a financial statement, and the app handles the rest.</li>
+<li>Multiple metric analysis available simultaneously, and the application platform is easily extensible to cover new financial metrics.</li>
+<li>Availability anywhere you have an internet connection.</li>
+</ul>
+
+<p>Try it today!  </p>
+
+<p>Bookmark this page: 
+<a href="https://cs79.shinyapps.io/Financial-KPI-Tool/">https://cs79.shinyapps.io/Financial-KPI-Tool/</a></p>
+
+</article>
+
+  </section>
+</body>
+  <!-- LOAD JAVASCRIPTS  -->
+	<script src='libraries/frameworks/html5slides/default/slides.js'></script>
+	<!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+	<script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({
+	    tex2jax: {
+	      inlineMath: [['$','$'], ['\\(','\\)']],
+	      processEscapes: true
+	    }
+	  });
+	</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script> -->
+	<script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+	<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+	 
+	</html>
